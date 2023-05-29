@@ -1,31 +1,22 @@
-public class Constant extends Function{
-    private double x;
+public class Constant extends Function {
+    private double value;
 
-    Constant(double x){
-        this.x= x;
-    }
-
-    public double getX() {
-        return x;
+    public Constant(double value) {
+        this.value = value;
     }
 
     @Override
     public double valueAt(double x) {
-        return this.getX();
+        return value;
     }
 
     @Override
     public String toString() {
-        return "(" +getX()+ ")";
+        return Double.toString(value);
     }
 
     @Override
-    public String derivative() {
-        return "0";
-    }
-
-    @Override
-    public String taylorPolynomial(int n) {
-        return "(" +getX()+ ")";
+    public Function derivative() {
+        return new Constant(0);
     }
 }

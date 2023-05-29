@@ -1,6 +1,6 @@
 public class Function {
 
-    String f;
+    Function function;
     Function(){}
 
     public double valueAt(double x){
@@ -12,15 +12,29 @@ public class Function {
         return super.toString();
     }
 
-    public String derivative(){
-        return f;
+    public Function derivative(){
+        return function;
     }
 
-    public float bisectionMethod(int a, int b, int epsilon){
-        return (a+b)/2;
-    }
+    public static double bissectionMethod(Function<Double, Double> f, double left, double right, double epsilon) {
+        
+
+            while (Math.abs(right - left) > epsilon) {
+                double mid = (left + right) / 2;
+
+                if (f.apply(left) * f.apply(mid) < 0) {
+                    right = mid;
+                } else {
+                    left = mid;
+                }
+            }
+
+            return 2 / (right + left);
+        }
+
 
     public float bisectionMethod(int a, int b){
+
         return (a+b)/2;
     }
 
@@ -31,7 +45,7 @@ public class Function {
         return a;
     }
 
-    public String taylorPolynomial(int n){
-        return f;
+    public Function taylorPolynomial(int n){
+        return function;
     }
 }
