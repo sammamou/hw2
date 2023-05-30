@@ -14,6 +14,15 @@ public class MultiSum extends Function {
                 result += " + ";
             }
         }
+        return "(" + String.valueOf(result) + ")";
+    }
+
+    @Override
+    public double valueAt(double x) {
+        double result = 1.0;
+        for (Function operand : operands) {
+            result += operand.valueAt(x);
+        }
         return result;
     }
 

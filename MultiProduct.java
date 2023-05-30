@@ -13,6 +13,7 @@ public class MultiProduct extends Function {
         }
         return result;
     }
+
     @Override
     public String toString() {
         String expression = "";
@@ -29,13 +30,14 @@ public class MultiProduct extends Function {
             }
         }
 
-        return expression;
+        return "(" + String.valueOf(expression) + ")";
     }
 
     @Override
     public Function derivative() {
         int length = factors.length;
         Function[] derivatives = new Function[length];
+
 
         for (int i = 0; i < length; i++) {
             Function[] otherOperands = new Function[length - 1];
@@ -45,10 +47,11 @@ public class MultiProduct extends Function {
                     otherOperands[index++] = factors[j];
                 }
             }
+
             Function derivative = new MultiProduct(otherOperands).derivative();
 
-            // Multiplication manuelle de la dérivée avec l'opérande
-            for (int j = 0; j < length; j++) {
+
+            for (int j = 0; j < length - 1; j++) {
                 if (j != i) {
                     derivative = new Product(derivative, factors[j]);
                 }
