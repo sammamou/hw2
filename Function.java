@@ -11,13 +11,9 @@ public class Function {
         return x ;
     }
 
-    public static double evaluate(Function function, double x) {
-        return function.valueAt(x);
-    }
-
     @Override
     public String toString() {
-        return super.toString();
+        return this.toString();
     }
 
     public Function derivative(){
@@ -73,7 +69,7 @@ public class Function {
         return newtonRaphsonMethod(a, 1e-5);
     }
 
-    public Function taylorPolynomial(int n) {
+    /*public Function taylorPolynomial(int n) {
         Function polynomial = new Function();
         Function currentTerm = this;
         Function termi;
@@ -115,7 +111,9 @@ public class Function {
         }
 
         return polynomial;
-    }
+    }*/
+
+
 
 
 

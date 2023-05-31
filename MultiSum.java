@@ -14,7 +14,7 @@ public class MultiSum extends Function {
                 result += " + ";
             }
         }
-        return "(" + String.valueOf(result) + ")";
+        return "(" + result + ")";
     }
 
     @Override

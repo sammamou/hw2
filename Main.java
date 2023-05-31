@@ -18,7 +18,6 @@ public class Main {
         DateTime dt1 = new DateTime(2023, 5, 21, 0, 0);
         Date d2 = dt1;
         Object o2 = d2;
-
         System.out.println("d1 with o1: " + d1.equals(o1));
         System.out.println("o1 with d1: " + o1.equals(d1));
 
@@ -35,7 +34,6 @@ public class Main {
         System.out.println("o2 with dt1: " + o2.equals(dt1));
         System.out.println("d2 with o2: " + d2.equals(o2));
         System.out.println("o2 with d2: " + o2.equals(d2));
-
         System.out.println("d1 with null: " + d1.equals(null));
         System.out.println("o1 with null: " + o1.equals(null));
         System.out.println("dt1 with null: " + dt1.equals(null));
@@ -55,11 +53,9 @@ public class Main {
         System.out.println("dt2: " + dt2);
     }
 
-
     /**
      * Performs tests of part B.
      */
-
     private static void testPartB() {
         System.out.println("-------------------- Tests for part B --------------------");
         rnd = new Random(42);
@@ -167,14 +163,12 @@ public class Main {
     /**
      * Tests the methods of a given function.
      */
-
-
     private static void testFunction(Function function, String name, int taylorMaxOrder) {
         System.out.println(name + ": " + function);
         System.out.println(name + " with toString: " + function.toString());
         printFunctionValues(function, name, 10);
         System.out.println(name + " derivative: " + function.derivative());
-        printTaylorPolynomial(function, name, taylorMaxOrder);
+        /*printTaylorPolynomial(function, name, taylorMaxOrder);*/
         System.out.println();
     }
 
@@ -202,16 +196,15 @@ public class Main {
      * @param num The number to round
      * @return The rounded number
      */
-
     private static double roundThreePlaces(double num) {
         return Double.parseDouble(String.format("%.3f", num));
     }
 
-    private static void printTaylorPolynomial(Function function, String name, int maxOrder) {
+    /*private static void printTaylorPolynomial(Function function, String name, int maxOrder) {
         for (int n = 0; n <= maxOrder; n++) {
             System.out.println(name + " Taylor polynomial of order " + n + ": " + function.taylorPolynomial(n));
         }
-    }
+    }*/
 
     private static void testRootFinding() {
         Function poly3 = new Polynomial(-4, 0, 1);
@@ -253,5 +246,4 @@ public class Main {
             System.out.println(name + " root near " + mid + " and default epsilon: " + function.newtonRaphsonMethod(mid));
         }
     }
-
 }

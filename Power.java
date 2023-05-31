@@ -1,9 +1,9 @@
-public class Power extends Product {
+public class Power extends MultiProduct {
     private Function base;
     private double exponent;
 
     public Power(Function base, double exponent) {
-        super(base, new Constant(exponent));
+        super(base, exponent);
         this.base = base;
         this.exponent = exponent;
     }
@@ -16,12 +16,16 @@ public class Power extends Product {
             return "(" + base.toString() + ")^" + exponent;
         }
     }
+    @Override
+    public double valueAt(double x) {
+        return Math.pow(base.valueAt(x), exponent);
+    }
 
     @Override
     public Function derivative() {
         Function baseDerivative = base.derivative();
-        Function exponentTimesBaseToExponentMinusOne = new Product(new Constant(exponent), new Power(base, exponent - 1));
+        Function exponentMinusOne = new Product(new Constant(exponent), new Power(base, exponent - 1));
 
-        return new Product(exponentTimesBaseToExponentMinusOne, baseDerivative);
+        return new Product(exponentMinusOne, baseDerivative);
     }
 }

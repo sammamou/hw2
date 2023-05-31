@@ -29,13 +29,13 @@ public class Quotient extends Function {
         Function numeratorDerivative = numerator.derivative();
         Function denominatorDerivative = denominator.derivative();
 
-        Function numeratorTimesDenominatorDerivative = new Product(numeratorDerivative, denominator);
-        Function denominatorTimesNumeratorDerivative = new Product(numerator, denominatorDerivative);
+        Function numeratorDerivativeT = new Product(numeratorDerivative, denominator);
+        Function denominatorDerivativeT = new Product(numerator, denominatorDerivative);
 
-        Function numeratorDerivativeTimesDenominatorMinusDenominatorDerivativeTimesNumerator = new Difference(
-                numeratorTimesDenominatorDerivative, denominatorTimesNumeratorDerivative);
+        Function diffDerivative= new Difference(
+                numeratorDerivativeT, denominatorDerivativeT);
         Function denominatorSquared = new Power(denominator, 2);
 
-        return new Quotient(numeratorDerivativeTimesDenominatorMinusDenominatorDerivativeTimesNumerator, denominatorSquared);
+        return new Quotient(diffDerivative, denominatorSquared);
     }
 }

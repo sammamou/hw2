@@ -7,6 +7,6 @@ public class Difference extends Sum {
 
     @Override
     public String toString() {
-        return "(" + leftFunction.toString() + " - " + rightFunction.toString() + ")";
+        return "(" + String.valueOf(leftFunction) + " - " + String.valueOf(rightFunction) + ")";
     }
 }
