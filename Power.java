@@ -1,8 +1,8 @@
 public class Power extends MultiProduct {
     private Function base;
-    private double exponent;
+    private int exponent;
 
-    public Power(Function base, double exponent) {
+    public Power(Function base, int exponent) {
         super(base, exponent);
         this.base = base;
         this.exponent = exponent;

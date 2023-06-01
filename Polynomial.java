@@ -12,6 +12,17 @@ public class Polynomial extends Function {
     @Override
     public double valueAt(double x) {
         double result = 0;
+
+        for (int i = 0; i < coefficients.length; i++) {
+            double coefficient = coefficients[i];
+            result += coefficient * Math.pow(x, i);
+        }
+
+        return result;
+    }
+
+    /*public double valueAt(double x) {
+        double result = 0;
         double power = 1;
 
         for (int i = 0; i < coefficients.length; i++) {
@@ -24,10 +35,47 @@ public class Polynomial extends Function {
             return result;
         }
 
-    }
+    }*/
 
     @Override
     public String toString() {
+        String expression = "";
+
+        for (int i = 0; i < coefficients.length; i++) {
+            double coefficient = coefficients[i];
+
+            if (coefficient != 0) {
+                if (!expression.isEmpty()) {
+                    if (coefficient > 0) {
+                        expression += " + ";
+                    } else {
+                        expression += " - ";
+                        coefficient = -coefficient;
+                    }
+                }
+
+                if (i == 0 || coefficient != 1) {
+                    if (Math.floor(coefficient) == coefficient) {
+                        expression += (int) coefficient;
+                    } else {
+                        expression += coefficient;
+                    }
+                }
+
+                if (i > 0) {
+                    expression += "x";
+
+                    if (i > 1) {
+                        expression += "^" + i;
+                    }
+                }
+            }
+        }
+
+        return "(" + expression + ")";
+    }
+
+    /*public String toString() {
         String expression = "";
 
         for (int i = coefficients.length - 1; i >= 0; i--) {
@@ -62,7 +110,7 @@ public class Polynomial extends Function {
         }
 
         return "(" + expression + ")";
-    }
+    }*/
 
     @Override
     public Function derivative() {
