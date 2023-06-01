@@ -1,9 +1,13 @@
 public class Polynomial extends Function {
     protected double[] coefficients;
 
+    public Polynomial(double[] liste, int n){
+        coefficients = liste;
+    }
     public Polynomial(double... coefficients) {
         this.coefficients = coefficients;
     }
+
 
     @Override
     public double valueAt(double x) {
@@ -14,8 +18,12 @@ public class Polynomial extends Function {
             result += coefficients[i] * power;
             power *= x;
         }
+        if (Math.floor(result) == result) {
+            return (int)result;
+        } else {
+            return result;
+        }
 
-        return result;
     }
 
     @Override
@@ -36,7 +44,11 @@ public class Polynomial extends Function {
                 }
 
                 if (i == 0 || coefficient != 1) {
-                    expression += coefficient;
+                    if (Math.floor(coefficient) == coefficient) {
+                        expression += (int)coefficient;
+                    }else {
+                        expression += coefficient;
+                    }
                 }
 
                 if (i > 0) {
@@ -49,12 +61,17 @@ public class Polynomial extends Function {
             }
         }
 
-        return expression;
+        return "(" + expression + ")";
     }
 
     @Override
     public Function derivative() {
-        int n = coefficients.length - 1;
+        int n;
+        if(coefficients.length == 0){
+            n = 0;
+        }else{
+            n = coefficients.length - 1;
+        }
         double[] derivativeCoefficients = new double[n];
 
         for (int i = 0; i < n; i++) {

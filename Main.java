@@ -4,14 +4,14 @@ public class Main {
     private static Random rnd;
 
     public static void main(String[] args) {
-        testPartA();
+        //testPartA();
         testPartB();
     }
 
     /**
      * Performs tests of part A.
      */
-    private static void testPartA() {
+    /*private static void testPartA() {
         System.out.println("------------------------------ Tests for part A ------------------------------");
         Date d1 = new Date(2023, 5, 21);
         Object o1 = d1;
@@ -52,7 +52,7 @@ public class Main {
         dt2.setMinute(59);
         System.out.println("dt2: " + dt2);
     }
-
+*/
     /**
      * Performs tests of part B.
      */
@@ -168,7 +168,7 @@ public class Main {
         System.out.println(name + " with toString: " + function.toString());
         printFunctionValues(function, name, 10);
         System.out.println(name + " derivative: " + function.derivative());
-        /*printTaylorPolynomial(function, name, taylorMaxOrder);*/
+        printTaylorPolynomial(function, name, taylorMaxOrder);
         System.out.println();
     }
 
@@ -200,11 +200,11 @@ public class Main {
         return Double.parseDouble(String.format("%.3f", num));
     }
 
-    /*private static void printTaylorPolynomial(Function function, String name, int maxOrder) {
+    private static void printTaylorPolynomial(Function function, String name, int maxOrder) {
         for (int n = 0; n <= maxOrder; n++) {
             System.out.println(name + " Taylor polynomial of order " + n + ": " + function.taylorPolynomial(n));
         }
-    }*/
+    }
 
     private static void testRootFinding() {
         Function poly3 = new Polynomial(-4, 0, 1);

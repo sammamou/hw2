@@ -8,13 +8,13 @@ public class Function {
     }
 
     public double valueAt(double x){
-        return x ;
+        if (Math.floor(x) == x) {
+            return (int)x;
+        } else {
+            return x;
+        }
     }
 
-    @Override
-    public String toString() {
-        return this.toString();
-    }
 
     public Function derivative(){
         return function;
@@ -69,7 +69,7 @@ public class Function {
         return newtonRaphsonMethod(a, 1e-5);
     }
 
-    /*public Function taylorPolynomial(int n) {
+   /*public Function taylorPolynomial(int n) {
         Function polynomial = new Function();
         Function currentTerm = this;
         Function termi;
@@ -102,25 +102,37 @@ public class Function {
                 public double valueAt(double x) {
                     return finalPolynomial.valueAt(0) + finalTermi1.valueAt(0);
                 }
-
-                @Override
-                public String toString() {
-                    return finalPolynomial.function.toString() + " + " + finalTermi1.function.toString();
-                }
             };
         }
 
         return polynomial;
-    }*/
 
+     }*/
 
-
-
+    public Function taylorPolynomial(int n) {
+        Function taylorpolynomial = new Function();
+        Function temp = this;
+        if (n == 0){
+            return new Constant(temp.valueAt(0));
+        }
+        double[] listeMekadmim = new double[n+1];
+        for (int i = 0; i <= n; i++) {
+            double x = temp.valueAt(0);
+            double rslt = x / factorial(i);
+            listeMekadmim[i] = rslt;
+            temp = temp.derivative();
+        }
+        taylorpolynomial = new Polynomial(listeMekadmim,n+1);
+        return taylorpolynomial;
+    }
 
 
     public double factorial(int n) {
         double result = 1;
-        for (int i = 2; i <= n; i++) {
+        if(n == 0){
+            return 1;
+        }
+        for (int i = 1; i <= n; i++) {
             result *= i;
         }
         return result;

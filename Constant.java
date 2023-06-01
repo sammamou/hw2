@@ -1,4 +1,4 @@
-public class Constant extends Polynomial {
+public class Constant extends Function {
     private final double value;
 
     public Constant(double value) {
@@ -13,10 +13,9 @@ public class Constant extends Polynomial {
     @Override
     public String toString() {
         if (Math.floor(value) == value) {
-            long intValue = (long) value;
-            return "(" + (intValue) + ")";
+            return "(" + (int)value + ")";
         } else {
-            return String.valueOf(value);
+            return "(" + value + ")" ;
         }
     }
 
@@ -28,12 +27,8 @@ public class Constant extends Polynomial {
     }
 
     @Override
-    public double bisectionMethod(double a, double b) {
-        return super.bisectionMethod(a, b);
-    }
-    /*@Override
     public Function taylorPolynomial(int n) {
         return this;
-    }*/
+    }
 
 }

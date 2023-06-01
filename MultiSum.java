@@ -19,12 +19,13 @@ public class MultiSum extends Function {
 
     @Override
     public double valueAt(double x) {
-        double result = 1.0;
+        double result = 0.0;
         for (Function operand : operands) {
             result += operand.valueAt(x);
         }
         return result;
     }
+
 
     @Override
     public Function derivative() {
