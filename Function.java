@@ -68,47 +68,6 @@ public class Function {
     public double newtonRaphsonMethod(double a) {
         return newtonRaphsonMethod(a, 1e-5);
     }
-
-   /*public Function taylorPolynomial(int n) {
-        Function polynomial = new Function();
-        Function currentTerm = this;
-        Function termi;
-
-        for (int i = 1; i <= n; i++) {
-            Function temp;
-            int finalI = i;
-            termi = new Function() {
-                @Override
-                public double valueAt(double x) {
-                    return currentTerm.valueAt(0) / factorial(finalI);
-                }
-            };
-
-            for (int j = 1; j <= i; j++) {
-                Function finalTermi = termi;
-                temp = new Function() {
-                    @Override
-                    public double valueAt(double x) {
-                        return finalTermi.valueAt(0) * currentTerm.derivative().valueAt(0);
-                    }
-                };
-                termi = temp;
-            }
-
-            Function finalTermi1 = termi;
-            Function finalPolynomial = polynomial;
-            polynomial = new Function() {
-                @Override
-                public double valueAt(double x) {
-                    return finalPolynomial.valueAt(0) + finalTermi1.valueAt(0);
-                }
-            };
-        }
-
-        return polynomial;
-
-     }*/
-
     public Function taylorPolynomial(int n) {
         Function taylorpolynomial = new Function();
         Function temp = this;
@@ -122,7 +81,7 @@ public class Function {
             listeMekadmim[i] = rslt;
             temp = temp.derivative();
         }
-        taylorpolynomial = new Polynomial(listeMekadmim,n+1);
+        taylorpolynomial = new Polynomial(listeMekadmim);
         return taylorpolynomial;
     }
 

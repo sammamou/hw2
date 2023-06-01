@@ -13,7 +13,7 @@ public class Power extends MultiProduct {
         if (exponent == 1) {
             return base.toString();
         } else {
-            return "(" + base.toString() + ")^" + exponent;
+            return "(" + base.toString() + "^" + exponent +")";
         }
     }
     @Override

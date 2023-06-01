@@ -1,11 +1,9 @@
 public class Polynomial extends Function {
     protected double[] coefficients;
 
-    public Polynomial(double[] liste, int n){
-        coefficients = liste;
-    }
-    public Polynomial(double... coefficients) {
-        this.coefficients = coefficients;
+
+    public Polynomial(double... coefficient) {
+        this.coefficients = coefficient;
     }
 
 
@@ -70,6 +68,9 @@ public class Polynomial extends Function {
                     }
                 }
             }
+        }
+        if(expression == ""){
+            expression = "0";
         }
 
         return "(" + expression + ")";
