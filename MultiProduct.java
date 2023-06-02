@@ -1,14 +1,17 @@
 public class MultiProduct extends Function {
     private Function[] factors;
-    private Variable x; // Variable symbolique
-
-    public MultiProduct(Function... factors) {
-        this.factors = factors;
-        this.x = new Variable("x"); // Création de la variable symbolique
+    public MultiProduct(Function a, Function b,Function... factors) {
+        this.factors = addElementToArray(factors, a, b);
+    }
+    public static Function[] addElementToArray(Function[] array, Function a, Function b) {
+        Function[] newArray = new Function[array.length + 2];
+        System.arraycopy(array, 0, newArray, 2, array.length);
+        newArray[0] = a;
+        newArray[1] = b;
+        return newArray;
     }
 
     public MultiProduct(Function f, double element){
-
     }
 
     @Override
@@ -28,11 +31,11 @@ public class MultiProduct extends Function {
             String factorExpression = factor.toString();
 
 
-                if (!expression.isEmpty()) {
-                    expression += " * ";
-                }
+            if (!expression.isEmpty()) {
+                expression += " * ";
+            }
 
-                expression += factorExpression;
+            expression += factorExpression;
 
         }
 
@@ -55,8 +58,17 @@ public class MultiProduct extends Function {
                 }
             }
         }
-        Function derivativeResult = new MultiSum(derivatives);
+        Function a = derivatives[0];
+        Function b = derivatives[1];
+        derivatives = removeFirstTwoElements(derivatives);
+        Function derivativeResult = new MultiSum(a, b,derivatives);
         return derivativeResult;
+    }
+
+    public static Function[] removeFirstTwoElements(Function[] array) {
+        Function[] newArray = new Function[array.length - 2];
+        System.arraycopy(array, 2, newArray, 0, array.length - 2);
+        return newArray;
     }
 
 

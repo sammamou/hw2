@@ -22,7 +22,6 @@ public class Constant extends Function {
 
     @Override
     public Function derivative() {
-        
         return new Constant(0);
     }
 

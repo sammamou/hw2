@@ -1,6 +1,6 @@
 public class Sum extends MultiSum {
 
-    public Sum(Function... operands) {
-        super(operands);
+    public Sum(Function a, Function b) {
+        super(a, b);
     }
 }

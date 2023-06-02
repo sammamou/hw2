@@ -10,15 +10,21 @@ public class Power extends MultiProduct {
 
     @Override
     public String toString() {
-        if (exponent == 1) {
-            return base.toString();
+        if(exponent ==0){
+            return new Constant(1).toString();
+        } else if (exponent < 0) {
+            return new Constant(0).toString();
         } else {
             return "(" + base.toString() + "^" + exponent +")";
         }
     }
     @Override
     public double valueAt(double x) {
-        return Math.pow(base.valueAt(x), exponent);
+        if (exponent>=0) {
+            return Math.pow(base.valueAt(x), exponent);
+        }else {
+            return 0;
+        }
     }
 
     @Override

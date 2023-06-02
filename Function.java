@@ -45,8 +45,10 @@ public class Function {
 
     public double newtonRaphsonMethod(double a, double epsilon) {
         double x = a;
-        double error = 1000000000 ;
-
+        double error = valueAt(x) ;
+        if (error<0){
+            error =-error;
+        }
         while (error > epsilon) {
             double fx = valueAt(x);
             double fpx = derivative().valueAt(x);
@@ -56,7 +58,10 @@ public class Function {
             }
 
             double newX = x - (fx / fpx);
-            error = Math.abs(newX - x);
+            error = valueAt(newX);
+            if (error<0){
+                error =-error;
+            }
             x = newX;
         }
 
@@ -68,6 +73,8 @@ public class Function {
     public double newtonRaphsonMethod(double a) {
         return newtonRaphsonMethod(a, 1e-5);
     }
+
+
     public Function taylorPolynomial(int n) {
         Function taylorpolynomial = new Function();
         Function temp = this;
@@ -77,6 +84,9 @@ public class Function {
         double[] listeMekadmim = new double[n+1];
         for (int i = 0; i <= n; i++) {
             double x = temp.valueAt(0);
+            if (Double.isNaN(x)) {
+                x = 0;
+            }
             double rslt = x / factorial(i);
             listeMekadmim[i] = rslt;
             temp = temp.derivative();

@@ -30,7 +30,7 @@ public class Quotient extends Function {
         Function denominatorDerivative = denominator.derivative();
 
         Function numeratorDerivativeT = new Product(numeratorDerivative, denominator);
-        Function denominatorDerivativeT = new Product(numerator, denominatorDerivative);
+        Function denominatorDerivativeT = new Product(denominatorDerivative, numerator);
 
         Function diffDerivative= new Difference(
                 numeratorDerivativeT, denominatorDerivativeT);

@@ -1,5 +1,5 @@
 public class Product extends MultiProduct {
-    public Product(Function... factors) {
-        super(factors);
+    public Product(Function a, Function b) {
+        super(a, b);
     }
 }
