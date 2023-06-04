@@ -30,8 +30,8 @@ public class Power extends MultiProduct {
     @Override
     public Function derivative() {
         Function baseDerivative = base.derivative();
-        Function exponentMinusOne = new Product(new Constant(exponent), new Power(base, exponent - 1));
+        Function exponentMinusOne = new Power(base, exponent - 1);
 
-        return new Product(exponentMinusOne, baseDerivative);
+        return new MultiProduct(new Constant(exponent),exponentMinusOne,baseDerivative);
     }
 }

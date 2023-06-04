@@ -42,6 +42,8 @@ public class MultiProduct extends Function {
         return "(" + String.valueOf(expression) + ")";
     }
 
+
+    /*
     @Override
     public Function derivative() {
         int length = factors.length;
@@ -57,6 +59,37 @@ public class MultiProduct extends Function {
                     derivatives[i] = new MultiProduct(derivatives[i],factors[j]);
                 }
             }
+        }
+        Function a = derivatives[0];
+        Function b = derivatives[1];
+        derivatives = removeFirstTwoElements(derivatives);
+        Function derivativeResult = new MultiSum(a, b,derivatives);
+        return derivativeResult;
+    }*/
+    @Override
+    public Function derivative() {
+        int length = factors.length;
+        Function[] derivatives = new Function[length];
+
+        for (int i = 0; i < factors.length; i++) {
+            derivatives[i] = factors[i].derivative();
+        }
+
+        for (int i = 0; i < length; i++) {
+            Function[] numderive = new Function[length];
+            int index = 0;
+            numderive[index] = factors[i].derivative();
+            for (int j = 0; j < length; j++) {
+                if (j != i) {
+                    index++;
+                    numderive[index] = factors[j];
+                }
+
+            }
+            Function a = numderive[0];
+            Function b = numderive[1];
+            numderive = removeFirstTwoElements(numderive);
+            derivatives[i] = new MultiProduct(a, b,numderive);
         }
         Function a = derivatives[0];
         Function b = derivatives[1];
