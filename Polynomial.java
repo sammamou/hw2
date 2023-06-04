@@ -1,12 +1,26 @@
+/**
+ * The Polynomial class extends the Function class and represents a polynomial function.
+ * It provides methods to evaluate the value of the polynomial at a given point, compute its derivative,
+ * and obtain a string representation of the polynomial.
+ */
 public class Polynomial extends Function {
     protected double[] coefficients;
 
-
+    /**
+     * Constructs a Polynomial object with the specified coefficients.
+     *
+     * @param coefficient The coefficients of the polynomial in ascending order of powers.
+     */
     public Polynomial(double... coefficient) {
         this.coefficients = coefficient;
     }
 
-
+    /**
+     * Evaluates the value of the polynomial at the given point.
+     *
+     * @param x The point at which to evaluate the polynomial.
+     * @return The value of the polynomial at the given point.
+     */
     @Override
     public double valueAt(double x) {
         double result = 0;
@@ -19,7 +33,11 @@ public class Polynomial extends Function {
         return result;
     }
 
-
+    /**
+     * Returns a string representation of the polynomial.
+     *
+     * @return A string representation of the polynomial.
+     */
     @Override
     public String toString() {
         String expression = "";
@@ -61,7 +79,11 @@ public class Polynomial extends Function {
         return "(" + expression + ")";
     }
 
-
+    /**
+     * Computes the derivative of the polynomial.
+     *
+     * @return A Function object representing the derivative of the polynomial.
+     */
     @Override
     public Function derivative() {
         int n;
